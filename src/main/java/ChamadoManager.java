@@ -1,14 +1,15 @@
 import java.util.Date;
+import java.util.List;
 
 public class ChamadoManager {
 
-	private List chamados;
+	private List<Chamado> chamados;
 
-	public List findChamadoByFuncionario(Funcionario funcionario) {
+	public List<Chamado> findChamadoByFuncionario(Funcionario funcionario) {
 		return null;
 	}
 
-	public List findChamadosByEquipamento(Equipamento equipamento) {
+	public List<Chamado> findChamadosByEquipamento(Equipamento equipamento) {
 		return null;
 	}
 
@@ -16,7 +17,7 @@ public class ChamadoManager {
 		return false;
 	}
 
-	public List findChamadosByKeyword(String keyword) {
+	public List<Chamado> findChamadosByKeyword(String keyword) {
 		return null;
 	}
 

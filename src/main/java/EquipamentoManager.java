@@ -1,12 +1,14 @@
+import java.util.List;
+
 public class EquipamentoManager {
 
-	private List equipamentos;
+	private List<Equipamento> equipamentos;
 
 	public Equipamento findEquipamentoById(int id) {
 		return null;
 	}
 
-	public List findEquipamentoByDescricao(String descricao) {
+	public List<Equipamento> findEquipamentoByDescricao(String descricao) {
 		return null;
 	}
 
