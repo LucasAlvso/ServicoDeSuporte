@@ -12,6 +12,7 @@ public class EquipamentoManager {
 
 	public boolean mudarSetor(int id, String novoSetor) {
 		return false;
+
 	}
 
 }
