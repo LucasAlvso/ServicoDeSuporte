@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class ChamadoManager {
 
 	private List chamados;
@@ -22,7 +24,7 @@ public class ChamadoManager {
 		return 0;
 	}
 
-	public double getMediaChamadosPorDia(DateTIme data) {
+	public double getMediaChamadosPorDia(Date data) {
 		return 0;
 	}
 

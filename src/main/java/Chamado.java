@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Chamado {
 
 	private Funcionario funcionario;
@@ -6,7 +8,7 @@ public class Chamado {
 
 	private int dataSolicitacao;
 
-	private DateTIme dataAbertura;
+	private Date dataAbertura;
 
 	private String status;
 
