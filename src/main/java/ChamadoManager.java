@@ -9,6 +9,11 @@ public class ChamadoManager {
 		this.chamados = new LinkedList<>();
 	}
 
+	public boolean addChamado(Chamado chamado)
+	{
+		return chamados.add(chamado);
+	}
+
 	public List<Chamado> findChamadoByFuncionario(Funcionario funcionario)
 	{
 		List<Chamado> chamadosByFuncionario = new LinkedList<>();
