@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.Date;
 
 public class Chamado {
@@ -12,13 +13,18 @@ public class Chamado {
 
 	private String status;
 
-	public Chamado(Funcionario funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String status)
+	private String textoResolucao;
+
+	private String textoSolicitacao;
+
+	public Chamado(Funcionario funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String textoSolicitacao)
 	{
 		this.funcionario = funcionario;
 		this.equipamento = equipamento;
 		this.dataSolicitacao = dataSolicitacao;
 		this.dataAbertura = dataAbertura;
-		this.status = status;
+		this.status = "ABERTO";
+		this.textoSolicitacao = textoSolicitacao;
 	}
 
 	public Funcionario getFuncionario()
@@ -69,5 +75,15 @@ public class Chamado {
 	public void setStatus(String status)
 	{
 		this.status = status;
+	}
+
+	public String getTextoResolucao()
+	{
+		return textoResolucao;
+	}
+
+	public String getTextoSolitacao()
+	{
+		return textoSolicitacao;
 	}
 }
