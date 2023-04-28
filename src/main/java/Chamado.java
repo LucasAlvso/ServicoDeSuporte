@@ -20,6 +20,8 @@ public class Chamado {
 
 	private String textoSolicitacao;
 
+	private FuncionarioDeSuporte FuncionarioSuporte;
+
 	public Chamado(Funcionario funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String textoSolicitacao)
 	{
 		this.funcionario = funcionario;
@@ -80,9 +82,8 @@ public class Chamado {
 		this.status = status;
 	}
 
-	public String getTextoResolucao()
-	{
-		return textoResolucao;
+	public void setTextoResolucao(String textoResolucao){
+		this.textoResolucao = textoResolucao;
 	}
 
 	public String getTextoSolitacao()
