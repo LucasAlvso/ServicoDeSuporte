@@ -9,7 +9,13 @@ public class SystemManager
 
 	public void runCliMenu()
 	{
+		boolean leave = false;
 
+		do
+		{
+
+		}
+		while (!leave);
 	}
 
 }
