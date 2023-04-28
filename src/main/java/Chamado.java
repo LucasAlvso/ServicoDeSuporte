@@ -2,6 +2,9 @@ import java.util.Collection;
 import java.util.Date;
 
 public class Chamado {
+	public enum Status{
+		ABERTO, ANDAMENTO, CONCLUIDO;
+	}
 
 	private Funcionario funcionario;
 
@@ -11,7 +14,7 @@ public class Chamado {
 
 	private Date dataAbertura;
 
-	private String status;
+	private Status status;
 
 	private String textoResolucao;
 
@@ -23,7 +26,7 @@ public class Chamado {
 		this.equipamento = equipamento;
 		this.dataSolicitacao = dataSolicitacao;
 		this.dataAbertura = dataAbertura;
-		this.status = "ABERTO";
+		this.status = Status.ABERTO;
 		this.textoSolicitacao = textoSolicitacao;
 	}
 
@@ -67,12 +70,12 @@ public class Chamado {
 		this.dataAbertura = dataAbertura;
 	}
 
-	public String getStatus()
+	public Status getStatus()
 	{
-		return status;
+		return this.status;
 	}
 
-	public void setStatus(String status)
+	public void setStatus(Status status)
 	{
 		this.status = status;
 	}

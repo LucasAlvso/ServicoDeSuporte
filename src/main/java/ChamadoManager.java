@@ -50,14 +50,14 @@ public class ChamadoManager {
 		{
 			if (existingChamado.equals(chamado))
 			{
-				if (existingChamado.getStatus().equalsIgnoreCase("ABERTO"))
+				if (existingChamado.getStatus().equals(Chamado.Status.ABERTO))
 				{
-					existingChamado.setStatus("EM ANDAMENTO");
+					existingChamado.setStatus(Chamado.Status.ANDAMENTO);
 					return true;
 				}
-				else if (existingChamado.getStatus().equalsIgnoreCase("EM ANDAMENTO"))
+				else if (existingChamado.getStatus().equals(Chamado.Status.ANDAMENTO))
 				{
-					existingChamado.setStatus("CONCLUIDO");
+					existingChamado.setStatus(Chamado.Status.CONCLUIDO);
 					return true;
 				}
 				else
@@ -96,7 +96,7 @@ public class ChamadoManager {
 
 		for (Chamado chamado : chamados)
 		{
-			if (chamado.getStatus().equalsIgnoreCase(status))
+			if (chamado.getStatus().equals(status))
 			{
 				count++;
 			}
