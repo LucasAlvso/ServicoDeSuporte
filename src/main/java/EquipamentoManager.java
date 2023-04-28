@@ -5,6 +5,8 @@ public class EquipamentoManager {
 	private List<Equipamento> equipamentos;
 
 	public Equipamento findEquipamentoById(int id) {
+
+
 		return null;
 	}
 
