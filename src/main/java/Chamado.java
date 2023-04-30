@@ -90,4 +90,9 @@ public class Chamado {
 	{
 		return textoSolicitacao;
 	}
+
+  public String getTextoResolucao()
+	{
+		return textoResolucao;
+	}
 }
