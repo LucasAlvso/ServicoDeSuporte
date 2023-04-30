@@ -1,13 +1,36 @@
-import java.util.List;
+import java.util.*;
 
 public class FuncionarioManager {
-	private List<Funcionario> funcionarios;
+	private final List<Funcionario> funcionarios;
+
+  public FuncionarioManager() {
+      funcionarios = new LinkedList<>();
+  }
+
+  public boolean addFuncionario(Funcionario employee) {
+    Funcionario idAlreadyInUse = findFuncionarioById(employee.getId());
+
+    if (idAlreadyInUse != null) {
+      return false;
+    }
+
+    return funcionarios.add(employee);
+  }
+
+  public List<Funcionario> getFuncionarios() {
+    return funcionarios;
+  }
 
 	public Funcionario findFuncionarioById(int id) {
-		return null;
+    for (Funcionario funcionario : funcionarios)
+		{
+			if (funcionario.getId() == id)
+			{
+				return funcionario;
+			}
+		}
+
+    return null;
 	}
 
-	public List<Funcionario> findFuncionariosBySetor(String setor) {
-		return null;
-	}
 }
