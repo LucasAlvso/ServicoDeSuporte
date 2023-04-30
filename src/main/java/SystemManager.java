@@ -112,14 +112,14 @@ public class SystemManager
 
 	}
 
-	public boolean listarChamadosPorEquipamento(int idEquipamento)
+	public void listarChamadosPorEquipamento(int idEquipamento)
 	{
 		Equipamento equipamento = equipamentoManager.findEquipamentoById(idEquipamento);
 
 		if (equipamento == null)
 		{
 			System.out.println("Equipamento não encontrado.");
-			return false;
+			return;
 		}
 
 		List<Chamado> chamados = chamadoManager.findChamadosByEquipamento(equipamento);
@@ -127,7 +127,7 @@ public class SystemManager
 		if (chamados == null || chamados.isEmpty())
 		{
 			System.out.println("Nenhum chamado encontrado para esse equipamento");
-			return false;
+			return;
 		}
 
 		chamados.sort(Comparator.comparing(Chamado::getDataAbertura));
@@ -137,7 +137,6 @@ public class SystemManager
 			System.out.println(chamado);
 		}
 
-		return true;
 	}
 
 	public boolean mudarSetorDeEquipamento()
