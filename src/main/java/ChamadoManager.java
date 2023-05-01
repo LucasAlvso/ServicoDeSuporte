@@ -56,6 +56,11 @@ public class ChamadoManager {
 		return null;
 	}
 
+	public List<Chamado> getChamados()
+	{
+		return chamados;
+	}
+
 	public boolean mudarStatusDeChamado(Chamado chamado)
 	{
 		for (Chamado existingChamado : chamados)

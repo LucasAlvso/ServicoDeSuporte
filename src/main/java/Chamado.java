@@ -8,8 +8,6 @@ public class Chamado {
 
 	private int id;
 
-	private Funcionario funcionario;
-
 	private Equipamento equipamento;
 
 	private int dataSolicitacao;
@@ -22,9 +20,9 @@ public class Chamado {
 
 	private String textoSolicitacao;
 
-	private FuncionarioDeSuporte FuncionarioSuporte;
+	private FuncionarioDeSuporte funcionario;
 
-	public Chamado(Funcionario funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String textoSolicitacao)
+	public Chamado(FuncionarioDeSuporte funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String textoSolicitacao)
 	{
 		this.funcionario = funcionario;
 		this.equipamento = equipamento;
@@ -38,7 +36,7 @@ public class Chamado {
 		return funcionario;
 	}
 
-	public void setFuncionario(Funcionario funcionario)
+	public void setFuncionario(FuncionarioDeSuporte funcionario)
 	{
 		this.funcionario = funcionario;
 	}
