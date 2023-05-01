@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,7 +33,21 @@ public class SystemManager
 			switch (option)
 			{
 				case "1":
-
+					System.out.println("Digite 1 para criar um usuario normal e 2 para criar um usuario de suporte: ");
+					try{
+						int opcao = optionScanner.nextInt();
+						System.out.println("ID: ");
+						int idNovoFuncionario = optionScanner.nextInt();
+						System.out.println("Nome: ");
+						String nomeNovoFuncionario = optionScanner.next();
+						System.out.println("Departamento: ");
+						String departamentoNovoFuncionario = optionScanner.next();
+						cadastrarFuncionario(idNovoFuncionario, nomeNovoFuncionario, departamentoNovoFuncionario, opcao);
+					}
+					catch(Exception e){
+						System.out.println("Valores de entrada invalidos.");
+					}
+					System.out.println("Funcionario criado com sucesso.");
 					break;
 				case "2":
 					break;
@@ -175,10 +190,20 @@ public class SystemManager
 
 	}
 
-	public boolean cadastrarFuncionario()
-	{
-		return false;
-
+	public boolean cadastrarFuncionario(int id, String nome, String Departamento, int tipo)
+	{		
+		if (tipo == 1){
+			Funcionario novoFuncionario = new Funcionario(id, nome, Departamento);
+			funcionarioManager.addFuncionario(novoFuncionario);
+		}
+		if (tipo == 2){
+			FuncionarioDeSuporte novoFuncionarioDeSuporte = new FuncionarioDeSuporte(id, nome, Departamento);
+			funcionarioManager.addFuncionario(novoFuncionarioDeSuporte);
+		}	
+		else {
+			return false;
+		}	
+		return true;
 	}
 }
 
