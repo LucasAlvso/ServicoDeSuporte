@@ -6,6 +6,8 @@ public class Chamado {
 		ABERTO, ANDAMENTO, CONCLUIDO;
 	}
 
+	private int id;
+
 	private Funcionario funcionario;
 
 	private Equipamento equipamento;
@@ -31,7 +33,6 @@ public class Chamado {
 		this.status = Status.ABERTO;
 		this.textoSolicitacao = textoSolicitacao;
 	}
-
 	public Funcionario getFuncionario()
 	{
 		return funcionario;
@@ -94,5 +95,10 @@ public class Chamado {
   public String getTextoResolucao()
 	{
 		return textoResolucao;
+	}
+
+	public int getId()
+	{
+		return id;
 	}
 }

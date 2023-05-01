@@ -44,6 +44,18 @@ public class ChamadoManager {
 		return chamadosByEquipamento;
 	}
 
+	public Chamado findChamadoById(int id)
+	{
+		for (Chamado chamado : chamados)
+		{
+			if (chamado.getId() == id)
+			{
+				return chamado;
+			}
+		}
+		return null;
+	}
+
 	public boolean mudarStatusDeChamado(Chamado chamado)
 	{
 		for (Chamado existingChamado : chamados)
@@ -105,19 +117,15 @@ public class ChamadoManager {
 		return ((double) count / chamados.size()) * 100;
 	}
 
-	public double getMediaChamadosPorDia(Date data)
+	public double getMediaChamadosPorDia()
 	{
-		int countChamados = 0;
 
 		Set<Date> distinctDias = new HashSet<>();
 
+		int countChamados = chamados.size();
+
 		for (Chamado chamado : chamados)
 		{
-			if (chamado.getDataAbertura().equals(data))
-			{
-				countChamados++;
-			}
-
 			distinctDias.add(chamado.getDataAbertura());
 		}
 
