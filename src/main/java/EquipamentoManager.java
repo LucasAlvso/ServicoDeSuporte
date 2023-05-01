@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class EquipamentoManager {
@@ -5,16 +6,31 @@ public class EquipamentoManager {
 	private List<Equipamento> equipamentos;
 
 	public Equipamento findEquipamentoById(int id) {
+		for(Equipamento e:equipamentos){
+			if (e.getId()==id) return e;
+		}
 		return null;
 	}
 
 	public List<Equipamento> findEquipamentoByDescricao(String descricao) {
-		return null;
+		List<Equipamento> lista = new ArrayList<>();
+		for(Equipamento e:equipamentos){
+			if (e.getDescricao().toLowerCase().equals(descricao.toLowerCase())) {
+				lista.add(e);
+			}
+		}
+		return lista;
 	}
 
 	public boolean mudarSetor(int id, String novoSetor) {
+		Equipamento e = this.findEquipamentoById(id);
+		if(e != null) {			
+			e.setSetor(novoSetor);
+			return true;
+		}
 		return false;
 
 	}
 
 }
+
