@@ -5,7 +5,7 @@ public class FuncionarioDeSuporte extends Funcionario{
 
     public FuncionarioDeSuporte(int id, String nome, String departamento) {
         super(id, nome, departamento);
-
+        historicoChamados = new ArrayList<Chamado>();
     }
 
     public ArrayList<Chamado> getHistoricoChamados(){
