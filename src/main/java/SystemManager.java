@@ -5,13 +5,19 @@ import java.util.Scanner;
 public class SystemManager
 {
 
-	private FuncionarioManager funcionarioManager;
+	private final FuncionarioManager funcionarioManager;
 
-	private EquipamentoManager equipamentoManager;
+	private final EquipamentoManager equipamentoManager;
 
-	private ChamadoManager chamadoManager;
+	private final ChamadoManager chamadoManager;
+	private  Funcionario funcionarioAtual;
 
-	private Funcionario funcionarioAtual;
+	public SystemManager()
+	{
+		this.funcionarioManager = new FuncionarioManager();
+		this.equipamentoManager = new EquipamentoManager();
+		this.chamadoManager = new ChamadoManager();
+	}
 
 	public void runCliMenu()
 	{
