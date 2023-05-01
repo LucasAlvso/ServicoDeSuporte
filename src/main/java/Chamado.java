@@ -6,7 +6,7 @@ public class Chamado {
 		ABERTO, ANDAMENTO, CONCLUIDO;
 	}
 
-	private Funcionario funcionario;
+	private int id;
 
 	private Equipamento equipamento;
 
@@ -20,9 +20,9 @@ public class Chamado {
 
 	private String textoSolicitacao;
 
-	private FuncionarioDeSuporte FuncionarioSuporte;
+	private FuncionarioDeSuporte funcionario;
 
-	public Chamado(Funcionario funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String textoSolicitacao)
+	public Chamado(FuncionarioDeSuporte funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String textoSolicitacao)
 	{
 		this.funcionario = funcionario;
 		this.equipamento = equipamento;
@@ -31,13 +31,12 @@ public class Chamado {
 		this.status = Status.ABERTO;
 		this.textoSolicitacao = textoSolicitacao;
 	}
-
 	public Funcionario getFuncionario()
 	{
 		return funcionario;
 	}
 
-	public void setFuncionario(Funcionario funcionario)
+	public void setFuncionario(FuncionarioDeSuporte funcionario)
 	{
 		this.funcionario = funcionario;
 	}
@@ -94,5 +93,10 @@ public class Chamado {
   public String getTextoResolucao()
 	{
 		return textoResolucao;
+	}
+
+	public int getId()
+	{
+		return id;
 	}
 }
