@@ -19,6 +19,41 @@ public class SystemManager
 		this.chamadoManager = new ChamadoManager();
 	}
 
+  public void selecionarUsuarioAtual() {
+    System.out.println("---------- Bem vindo ----------");
+    listarFuncionarioManager();
+    System.out.println("Insira o seu ID de funcionario:");
+    Scanner input = new Scanner(System.in);
+    boolean notValid = true;
+    while (notValid) {
+      try {
+        int id = input.nextInt();
+        this.funcionarioAtual = funcionarioManager.findFuncionarioById(id);
+        if (funcionarioAtual != null) {
+          notValid = false;
+        } else {
+          System.out.println("Id inválido, digite novamente");
+        }
+      } catch (Exception e) {
+        System.out.println("Número inválido, digite novamente");
+        input.nextLine();
+      }
+    }
+    System.out.println("\n-- Bem vindo(a) " + funcionarioAtual.getNome() + " --\n");
+    runCliMenu();
+  }
+
+  public void listarFuncionarioManager() {
+    List<Funcionario> funcionarios = funcionarioManager.getFuncionarios();
+
+    System.out.println("Id - Nome do funcionario");
+    for (Funcionario funcionario : funcionarios) {
+      System.out.println(
+        String.valueOf(funcionario.getId()) + " - " + funcionario.getNome()
+      );
+    }
+  }
+
 	public void runCliMenu()
 	{
 		boolean leave = false;
@@ -65,6 +100,7 @@ public class SystemManager
 				case "10":
 					break;
 				case "11":
+          selecionarUsuarioAtual();
 					break;
 				case "12":
 					break;
@@ -83,16 +119,16 @@ public class SystemManager
 	{
 		System.out.println("---------- MENU ----------");
 		System.out.println("1 - Cadastrar funcionário");
-		System.out.println("2 - Selecionar usuário atual");
-		System.out.println("3 - Cadastrar equipamento");
-		System.out.println("4 - Cadastrar chamado");
-		System.out.println("5 - Atualizar status de chamado");
-		System.out.println("6 - Mudar setor de equipamento");
-		System.out.println("7 - Listar chamados por equipamento"); 	//A listagem de chamado por equipamento deve ser por ordem crescente de data de abertura.
-		System.out.println("8 - Buscar chamado por palavra-chave");
-		System.out.println("9 - Listagem de estatísticas de chamados");
-		System.out.println("10 - Listar Funcionários sem chamados ativos");
-		System.out.println("11 - Salvar chamados em arquivo csv");
+		System.out.println("2 - Cadastrar equipamento");
+		System.out.println("3 - Cadastrar chamado");
+		System.out.println("4 - Atualizar status de chamado");
+		System.out.println("5 - Mudar setor de equipamento");
+		System.out.println("6 - Listar chamados por equipamento"); 	//A listagem de chamado por equipamento deve ser por ordem crescente de data de abertura.
+		System.out.println("7 - Buscar chamado por palavra-chave");
+		System.out.println("8 - Listagem de estatísticas de chamados");
+		System.out.println("9 - Listar Funcionários sem chamados ativos");
+		System.out.println("10 - Salvar chamados em arquivo csv");
+    System.out.println("11 - Trocar do usuario atual de id " + funcionarioAtual.getId());
 		System.out.println("Qualquer outra opção - Sair");
 	}
 
@@ -164,12 +200,6 @@ public class SystemManager
 	}
 
 	public boolean cadastrarEquipamento()
-	{
-		return false;
-
-	}
-
-	public boolean selecionarUsuarioAtual()
 	{
 		return false;
 
