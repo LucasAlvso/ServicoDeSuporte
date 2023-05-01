@@ -47,11 +47,7 @@ public class SystemManager
 					catch(Exception e){
 						System.out.println("Valores de entrada invalidos.");
 					}
-					System.out.println("Funcionario criado com sucesso. Funcionarios cadastrados: ");
-					List<Funcionario> funcionarios = funcionarioManager.getFuncionarios();
-					for(Funcionario f:funcionarios){
-						System.out.println(f.getNome());
-					}
+					System.out.println("Funcionario criado com sucesso.");
 					break;
 				case "2":
 					break;
@@ -203,7 +199,10 @@ public class SystemManager
 		if (tipo == 2){
 			FuncionarioDeSuporte novoFuncionarioDeSuporte = new FuncionarioDeSuporte(id, nome, Departamento);
 			funcionarioManager.addFuncionario(novoFuncionarioDeSuporte);
-		}		
+		}	
+		else {
+			return false;
+		}	
 		return true;
 	}
 }
