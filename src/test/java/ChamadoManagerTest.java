@@ -51,5 +51,20 @@ class ChamadoManagerTest {
         Assertions.assertEquals(chamado1, result);
     }
 
+    @Test
+    void testFindChamadosKeyword() {
+        Chamado chamado1 = new Chamado(funcionario, equipamento, 1, dataAquisicao, "teste");
+        chamadoManager.addChamado(chamado1);
+        Chamado result = chamadoManager.findChamadoById(1);
+        Assertions.assertEquals(chamado1, result);
+    }
+
+    @Test
+    void testFindChamadosByKeyword() {
+        Chamado chamado1 = new Chamado(funcionario, equipamento, 1, dataAquisicao, "teste");
+        chamadoManager.addChamado(chamado1);
+        List<Chamado> chamadosByKeyword = chamadoManager.findChamadosByKeyword("Dell");
+        Assertions.assertTrue(chamadosByKeyword.contains(chamado1));
+    }
 
 }
