@@ -7,6 +7,9 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import java.util.Date;
 
 
@@ -90,6 +93,22 @@ public class SystemManager
 					cadastrarEquipamento(idEquip,descricao,data,EquipSetor);
 					break;
 				case "4":
+					System.out.println("Digite o id do equipamento que precisa de suporte");
+					int idEquipSup = optionScanner.nextInt();
+					System.out.println("Entre uma data (formato: MM/dd/yyyy): ");
+					String dateStrSup = optionScanner.next();
+					SimpleDateFormat dateFormatSup = new SimpleDateFormat("MM/dd/yyyy");
+					Date dataSup = null;
+					try {
+						dataSup = dateFormatSup.parse(dateStrSup);
+					} catch (ParseException e) {
+						System.out.println("Invalid date format.");
+					}
+					System.out.println("Digite o texto da Solicitacao");
+					String text = optionScanner.next();
+					System.out.println("Digite o id do Funcionario de Suporte");
+					int idFs = optionScanner.nextInt();
+					cadastrarChamado(idFs, idEquipSup, dataSup, text);
 					break;
 				case "5":
 					System.out.println("Digite o id do chamado: ");
@@ -352,9 +371,18 @@ public class SystemManager
 		return true;
 	}
 
-	public boolean cadastrarChamado()
+	public boolean cadastrarChamado(int fsid, int equipId, Date dataSol, String descricao)
 	{
-		return false;
+		if(funcionarioAtual==null) return false;
+		Funcionario fs = funcionarioManager.findFuncionarioById(fsid);
+		if(fs instanceof FuncionarioDeSuporte){
+			Equipamento e = equipamentoManager.findEquipamentoById(equipId);
+			Chamado c = new Chamado((FuncionarioDeSuporte)fs, e, equipId, dataSol, descricao);
+			chamadoManager.addChamado(c);
+			return true;
+		}
+		else return false;
+
 
 	}
 
