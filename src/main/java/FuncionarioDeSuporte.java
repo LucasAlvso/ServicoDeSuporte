@@ -25,6 +25,11 @@ public class FuncionarioDeSuporte extends Funcionario{
         equipamento.setSetor(novoSetor);
     }
 
+    public void adicionarChamado(Chamado chamado)
+    {
+        historicoChamados.add(chamado);
+    }
+
     @Override
     public String toString()
     {
