@@ -1,9 +1,14 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class EquipamentoManager {
 
 	private List<Equipamento> equipamentos;
+
+	public EquipamentoManager(){
+		this.equipamentos = new LinkedList<>();
+	}
 
 	public Equipamento findEquipamentoById(int id) {
 		for(Equipamento e:equipamentos){
@@ -30,6 +35,11 @@ public class EquipamentoManager {
 		}
 		return false;
 
+	}
+
+	public boolean adicionaEquipamento(Equipamento e){
+		equipamentos.add(e);
+		return true;
 	}
 
 }

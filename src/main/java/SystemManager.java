@@ -1,18 +1,20 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Date;
+
 
 public class SystemManager
 {
 
 	private final FuncionarioManager funcionarioManager;
-
 	private final EquipamentoManager equipamentoManager;
-
 	private final ChamadoManager chamadoManager;
 	private  Funcionario funcionarioAtual;
 
@@ -70,6 +72,22 @@ public class SystemManager
 
 
 				case "3":
+					System.out.println("Digite o id do equipamento");
+					int idEquip = optionScanner.nextInt();
+					System.out.println("Digite a descricao do Produto");
+					String descricao = optionScanner.next();
+					System.out.println("Entre uma data (formato: MM/dd/yyyy): ");
+					String dateStr = optionScanner.next();
+					SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+					Date data = null;
+					try {
+						data = dateFormat.parse(dateStr);
+					} catch (ParseException e) {
+						System.out.println("Invalid date format.");
+					}
+					System.out.println("Digite o setor");
+					String EquipSetor = optionScanner.nextLine();
+					cadastrarEquipamento(idEquip,descricao,data,EquipSetor);
 					break;
 				case "4":
 					break;
@@ -340,10 +358,11 @@ public class SystemManager
 
 	}
 
-	public boolean cadastrarEquipamento()
+	public boolean cadastrarEquipamento(int id, String descricao, Date dataAquisicao, String setor)
 	{
-		return false;
-
+		Equipamento e = new Equipamento(id, descricao, dataAquisicao, setor);
+		equipamentoManager.adicionaEquipamento(e);
+		return true;
 	}
 
 	public boolean selecionarUsuarioAtual(int id)
