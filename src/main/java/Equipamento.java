@@ -57,4 +57,14 @@ public class Equipamento {
 	{
 		this.setor = setor;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "Equipamento:" +
+				"id = " + id +
+				", descricao = '" + descricao + '\'' +
+				", dataAquisicao = " + dataAquisicao.toString() +
+				", setor = '" + setor + '\'';
+	}
 }

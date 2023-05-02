@@ -1,9 +1,14 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class EquipamentoManager {
 
 	private List<Equipamento> equipamentos;
+
+	public EquipamentoManager(){
+		this.equipamentos = new LinkedList<>();
+	}
 
 	public Equipamento findEquipamentoById(int id) {
 		for(Equipamento e:equipamentos){
@@ -15,7 +20,7 @@ public class EquipamentoManager {
 	public List<Equipamento> findEquipamentoByDescricao(String descricao) {
 		List<Equipamento> lista = new ArrayList<>();
 		for(Equipamento e:equipamentos){
-			if (e.getDescricao().toLowerCase().equals(descricao.toLowerCase())) {
+			if (e.getDescricao().toLowerCase().contains(descricao.toLowerCase())) {
 				lista.add(e);
 			}
 		}
@@ -30,6 +35,11 @@ public class EquipamentoManager {
 		}
 		return false;
 
+	}
+
+	public boolean adicionaEquipamento(Equipamento e){
+		equipamentos.add(e);
+		return true;
 	}
 
 }

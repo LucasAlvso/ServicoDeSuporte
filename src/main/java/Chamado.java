@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 
@@ -6,13 +7,11 @@ public class Chamado {
 		ABERTO, ANDAMENTO, CONCLUIDO;
 	}
 
-	private Funcionario funcionario;
+	private int id;
 
 	private Equipamento equipamento;
 
-	private int dataSolicitacao;
-
-	private Date dataAbertura;
+	private Date dataSolicitacao;
 
 	private Status status;
 
@@ -20,24 +19,23 @@ public class Chamado {
 
 	private String textoSolicitacao;
 
-	private FuncionarioDeSuporte FuncionarioSuporte;
+	private FuncionarioDeSuporte funcionario;
 
-	public Chamado(Funcionario funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String textoSolicitacao)
+	public Chamado(FuncionarioDeSuporte funcionario, Equipamento equipamento, int id, Date dataSolicitacao, String textoSolicitacao)
 	{
 		this.funcionario = funcionario;
 		this.equipamento = equipamento;
+		this.id = id;
 		this.dataSolicitacao = dataSolicitacao;
-		this.dataAbertura = dataAbertura;
 		this.status = Status.ABERTO;
 		this.textoSolicitacao = textoSolicitacao;
 	}
-
-	public Funcionario getFuncionario()
+	public FuncionarioDeSuporte getFuncionario()
 	{
 		return funcionario;
 	}
 
-	public void setFuncionario(Funcionario funcionario)
+	public void setFuncionario(FuncionarioDeSuporte funcionario)
 	{
 		this.funcionario = funcionario;
 	}
@@ -52,24 +50,14 @@ public class Chamado {
 		this.equipamento = equipamento;
 	}
 
-	public int getDataSolicitacao()
+	public Date getDataSolicitacao()
 	{
 		return dataSolicitacao;
 	}
 
-	public void setDataSolicitacao(int dataSolicitacao)
+	public void setDataSolicitacao(Date dataSolicitacao)
 	{
 		this.dataSolicitacao = dataSolicitacao;
-	}
-
-	public Date getDataAbertura()
-	{
-		return dataAbertura;
-	}
-
-	public void setDataAbertura(Date dataAbertura)
-	{
-		this.dataAbertura = dataAbertura;
 	}
 
 	public Status getStatus()
@@ -94,5 +82,23 @@ public class Chamado {
   public String getTextoResolucao()
 	{
 		return textoResolucao;
+	}
+
+	public int getId()
+	{
+		return id;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Chamado " +
+				"id =" + id +
+				", equipamento = " + equipamento.getDescricao() +
+				", dataSolicitacao = " + dataSolicitacao.toString() +
+				", status = " + status.toString() +
+				", textoResolucao = '" + textoResolucao + '\'' +
+				", textoSolicitacao = '" + textoSolicitacao + '\'' +
+				", funcionario = " + funcionario;
 	}
 }
