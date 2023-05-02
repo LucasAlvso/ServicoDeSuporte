@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 
@@ -12,8 +13,6 @@ public class Chamado {
 
 	private Date dataSolicitacao;
 
-	private Date dataAbertura;
-
 	private Status status;
 
 	private String textoResolucao;
@@ -22,12 +21,12 @@ public class Chamado {
 
 	private FuncionarioDeSuporte funcionario;
 
-	public Chamado(FuncionarioDeSuporte funcionario, Equipamento equipamento, Date dataSolicitacao, Date dataAbertura, String textoSolicitacao)
+	public Chamado(FuncionarioDeSuporte funcionario, Equipamento equipamento, int id, Date dataSolicitacao, String textoSolicitacao)
 	{
 		this.funcionario = funcionario;
 		this.equipamento = equipamento;
+		this.id = id;
 		this.dataSolicitacao = dataSolicitacao;
-		this.dataAbertura = dataAbertura;
 		this.status = Status.ABERTO;
 		this.textoSolicitacao = textoSolicitacao;
 	}
@@ -59,16 +58,6 @@ public class Chamado {
 	public void setDataSolicitacao(Date dataSolicitacao)
 	{
 		this.dataSolicitacao = dataSolicitacao;
-	}
-
-	public Date getDataAbertura()
-	{
-		return dataAbertura;
-	}
-
-	public void setDataAbertura(Date dataAbertura)
-	{
-		this.dataAbertura = dataAbertura;
 	}
 
 	public Status getStatus()
