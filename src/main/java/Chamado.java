@@ -30,7 +30,7 @@ public class Chamado {
 		this.status = Status.ABERTO;
 		this.textoSolicitacao = textoSolicitacao;
 	}
-	public Funcionario getFuncionario()
+	public FuncionarioDeSuporte getFuncionario()
 	{
 		return funcionario;
 	}

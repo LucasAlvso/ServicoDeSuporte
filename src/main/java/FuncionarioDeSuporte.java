@@ -34,4 +34,16 @@ public class FuncionarioDeSuporte extends Funcionario{
                 ", departamento = '" + super.getDepartamento() + '\'';
     }
 
+    public String getNome(){
+        return super.getNome();
+    }
+
+    public String getDepartamento(){
+        return super.getDepartamento();
+    }
+
+    public int getId(){
+        return super.getId();
+    }
+
 }
