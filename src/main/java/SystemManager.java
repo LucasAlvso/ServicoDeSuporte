@@ -148,6 +148,8 @@ public class SystemManager
 						System.out.println("Formato de data inválido.");
 					}
 					break;
+
+
 				case "4":
 					System.out.println("Digite o id do equipamento que precisa de suporte");
 					int idEquipSup = optionScanner.nextInt();
@@ -344,7 +346,7 @@ public class SystemManager
 			printWriter.write(chamado.getEquipamento().getId() + ",");
 			printWriter.write(chamado.getDataSolicitacao() + ",");
 			printWriter.write(chamado.getStatus() + ",");
-			printWriter.write(chamado.getTextoResolucao() + ",");
+			printWriter.write(chamado.getTextoResolucao() + "\n");
 		}
 		printWriter.close();
 
@@ -440,15 +442,14 @@ public class SystemManager
 		return true;
 	}
 
-	public boolean cadastrarChamado()
-	{
-		return false;
-
-	}
-
 	public boolean cadastrarEquipamento(int id, String descricao, Date dataAquisicao, String setor)
 	{
 		Equipamento e = new Equipamento(id, descricao, dataAquisicao, setor);
+		if (equipamentoManager.findEquipamentoById(id) != null)
+		{
+			System.out.println("ID já cadastrado.");
+			return false;
+		}
 		equipamentoManager.adicionaEquipamento(e);
 		return true;
 	}
@@ -484,11 +485,21 @@ public class SystemManager
 		if (tipo == 1)
 		{
 			Funcionario novoFuncionario = new Funcionario(id, nome, Departamento);
+			if (funcionarioManager.findFuncionarioById(id) != null)
+			{
+				System.out.println("ID já cadastrado");
+				return false;
+			}
 			funcionarioManager.addFuncionario(novoFuncionario);
 		}
 		if (tipo == 2)
 		{
 			FuncionarioDeSuporte novoFuncionarioDeSuporte = new FuncionarioDeSuporte(id, nome, Departamento);
+			if (funcionarioManager.findFuncionarioById(id) != null)
+			{
+				System.out.println("ID já cadastrado");
+				return false;
+			}
 			funcionarioManager.addFuncionario(novoFuncionarioDeSuporte);
 		} else
 		{
@@ -522,6 +533,12 @@ public class SystemManager
 		{
 			Equipamento e = equipamentoManager.findEquipamentoById(equipId);
 			Chamado c = new Chamado((FuncionarioDeSuporte) fs, e, equipId, dataSol, descricao);
+			if (chamadoManager.findChamadoById(c.getId()) != null)
+			{
+				System.out.println("ID já cadastrado");
+				return false;
+			}
+			((FuncionarioDeSuporte) fs).adicionarChamado(c);
 			chamadoManager.addChamado(c);
 			return true;
 		} else return false;
