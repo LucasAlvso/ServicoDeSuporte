@@ -25,5 +25,14 @@ class ChamadoManagerTest {
         Assertions.assertEquals(1, chamadoManager.getChamados().size());
     }
 
+    @Test
+    void testFindChamadosByEquipamento() {
+        Chamado chamado1 = new Chamado(funcionario, equipamento, 1, dataAquisicao, "teste");
+        chamadoManager.addChamado(chamado1);
+        List<Chamado> result = chamadoManager.findChamadosByEquipamento(equipamento);
+        Assertions.assertEquals(1, result.size());
+        Assertions.assertEquals(chamado1, result.get(0));
+    }
+
 
 }
