@@ -118,7 +118,7 @@ public class ChamadoManager {
 
 		for (Chamado chamado : chamados)
 		{
-			if (chamado.getStatus().equals(status))
+			if (chamado.getStatus().equals(status.toString()))
 			{
 				count++;
 			}
