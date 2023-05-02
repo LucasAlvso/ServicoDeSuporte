@@ -346,7 +346,7 @@ public class SystemManager
 			printWriter.write(chamado.getEquipamento().getId() + ",");
 			printWriter.write(chamado.getDataSolicitacao() + ",");
 			printWriter.write(chamado.getStatus() + ",");
-			printWriter.write(chamado.getTextoResolucao() + ",");
+			printWriter.write(chamado.getTextoResolucao() + "\n");
 		}
 		printWriter.close();
 
