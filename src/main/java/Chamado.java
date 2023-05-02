@@ -96,7 +96,6 @@ public class Chamado {
 				"id =" + id +
 				", equipamento = " + equipamento.getDescricao() +
 				", dataSolicitacao = " + dataSolicitacao.toString() +
-				", dataAbertura = " + dataAbertura.toString() +
 				", status = " + status.toString() +
 				", textoResolucao = '" + textoResolucao + '\'' +
 				", textoSolicitacao = '" + textoSolicitacao + '\'' +

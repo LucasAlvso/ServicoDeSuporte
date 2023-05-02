@@ -142,7 +142,7 @@ public class ChamadoManager {
 
 		for (Chamado chamado : chamados)
 		{
-			distinctDias.add(chamado.getDataAbertura());
+			distinctDias.add(chamado.getDataSolicitacao());
 		}
 
 
