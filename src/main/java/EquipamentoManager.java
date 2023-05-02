@@ -20,7 +20,7 @@ public class EquipamentoManager {
 	public List<Equipamento> findEquipamentoByDescricao(String descricao) {
 		List<Equipamento> lista = new ArrayList<>();
 		for(Equipamento e:equipamentos){
-			if (e.getDescricao().toLowerCase().equals(descricao.toLowerCase())) {
+			if (e.getDescricao().toLowerCase().contains(descricao.toLowerCase())) {
 				lista.add(e);
 			}
 		}

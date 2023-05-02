@@ -111,6 +111,11 @@ public class ChamadoManager {
 	{
 		int count = 0;
 
+		if (chamados.isEmpty())
+		{
+			return 0.0;
+		}
+
 		for (Chamado chamado : chamados)
 		{
 			if (chamado.getStatus().equals(status))
@@ -119,11 +124,17 @@ public class ChamadoManager {
 			}
 		}
 
+
 		return ((double) count / chamados.size()) * 100;
 	}
 
 	public double getMediaChamadosPorDia()
 	{
+
+		if (chamados.isEmpty())
+		{
+			return 0.0;
+		}
 
 		Set<Date> distinctDias = new HashSet<>();
 
@@ -133,6 +144,7 @@ public class ChamadoManager {
 		{
 			distinctDias.add(chamado.getDataAbertura());
 		}
+
 
 		return ((double) countChamados / distinctDias.size());
 	}

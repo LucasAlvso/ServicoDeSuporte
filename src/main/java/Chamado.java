@@ -10,7 +10,7 @@ public class Chamado {
 
 	private Equipamento equipamento;
 
-	private int dataSolicitacao;
+	private Date dataSolicitacao;
 
 	private Date dataAbertura;
 
@@ -22,7 +22,7 @@ public class Chamado {
 
 	private FuncionarioDeSuporte funcionario;
 
-	public Chamado(FuncionarioDeSuporte funcionario, Equipamento equipamento, int dataSolicitacao, Date dataAbertura, String textoSolicitacao)
+	public Chamado(FuncionarioDeSuporte funcionario, Equipamento equipamento, Date dataSolicitacao, Date dataAbertura, String textoSolicitacao)
 	{
 		this.funcionario = funcionario;
 		this.equipamento = equipamento;
@@ -51,12 +51,12 @@ public class Chamado {
 		this.equipamento = equipamento;
 	}
 
-	public int getDataSolicitacao()
+	public Date getDataSolicitacao()
 	{
 		return dataSolicitacao;
 	}
 
-	public void setDataSolicitacao(int dataSolicitacao)
+	public void setDataSolicitacao(Date dataSolicitacao)
 	{
 		this.dataSolicitacao = dataSolicitacao;
 	}
@@ -98,5 +98,19 @@ public class Chamado {
 	public int getId()
 	{
 		return id;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Chamado " +
+				"id =" + id +
+				", equipamento = " + equipamento.getDescricao() +
+				", dataSolicitacao = " + dataSolicitacao.toString() +
+				", dataAbertura = " + dataAbertura.toString() +
+				", status = " + status.toString() +
+				", textoResolucao = '" + textoResolucao + '\'' +
+				", textoSolicitacao = '" + textoSolicitacao + '\'' +
+				", funcionario = " + funcionario;
 	}
 }

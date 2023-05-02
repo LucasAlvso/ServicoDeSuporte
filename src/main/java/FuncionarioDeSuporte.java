@@ -25,4 +25,13 @@ public class FuncionarioDeSuporte extends Funcionario{
         equipamento.setSetor(novoSetor);
     }
 
+    @Override
+    public String toString()
+    {
+        return "Funcionario" +
+                "id = " + super.getId() +
+                ", nome = '" + super.getNome() + '\'' +
+                ", departamento = '" + super.getDepartamento() + '\'';
+    }
+
 }
