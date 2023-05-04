@@ -30,7 +30,7 @@ public class SystemManager
 		Equipamento equipamento4 = new Equipamento(4, "Projetor Epson", new Date(1234567890000L), "Departamento de Treinamento");
 		Equipamento equipamento5 = new Equipamento(5, "Cadeira ergonômica", new Date(1234567890000L), "Departamento de RH");
 
-		FuncionarioDeSuporte suporte1 = new FuncionarioDeSuporte(11, "João Silva", "Departamento de TI");
+		FuncionarioDeSuporte suporte1 = new FuncionarioDeSuporte(11, "Joao Silva", "Departamento de TI");
 		FuncionarioDeSuporte suporte2 = new FuncionarioDeSuporte(12, "Maria Santos", "Departamento de TI");
 		FuncionarioDeSuporte suporte3 = new FuncionarioDeSuporte(13, "Ana Paula", "Departamento de Suporte");
 		FuncionarioDeSuporte suporte4 = new FuncionarioDeSuporte(14, "Felipe Mendes", "Departamento de Suporte");
@@ -41,11 +41,11 @@ public class SystemManager
 		Chamado chamado4 = new Chamado(suporte4, equipamento4, 4, new Date(1651036800000L), "Projetor com imagem distorcida");
 		Chamado chamado5 = new Chamado(suporte1, equipamento5, 5, new Date(1650950400000L), "Cadeira com problema no ajuste de altura");
 
-		Funcionario funcionario1 = new Funcionario(1, "José da Silva", "Departamento de TI");
+		Funcionario funcionario1 = new Funcionario(1, "Jose da Silva", "Departamento de TI");
 		Funcionario funcionario2 = new Funcionario(2, "Maria Oliveira", "Departamento de Marketing");
 		Funcionario funcionario3 = new Funcionario(3, "Ana Santos", "Departamento Administrativo");
 		Funcionario funcionario4 = new Funcionario(4, "Felipe Rodrigues", "Departamento de Treinamento");
-		Funcionario funcionario5 = new Funcionario(5, "João Paulo", "Departamento de RH");
+		Funcionario funcionario5 = new Funcionario(5, "Joao Paulo", "Departamento de RH");
 		Funcionario funcionario6 = new Funcionario(6, "Pedro Silva", "Departamento de TI");
 		Funcionario funcionario7 = new Funcionario(7, "Carla Oliveira", "Departamento de Marketing");
 		Funcionario funcionario8 = new Funcionario(8, "Paula Santos", "Departamento Administrativo");
@@ -95,26 +95,8 @@ public class SystemManager
 			switch (option)
 			{
 				case "1":
-					System.out.println("Digite 1 para criar um usuario normal e 2 para criar um usuario de suporte: ");
-					try
-					{
-						int opcao = optionScanner.nextInt();
-						System.out.println("ID: ");
-						int idNovoFuncionario = optionScanner.nextInt();
-						System.out.println("Nome: ");
-						String nomeNovoFuncionario = optionScanner.next();
-						System.out.println("Departamento: ");
-						String departamentoNovoFuncionario = optionScanner.next();
-						cadastrarFuncionario(idNovoFuncionario, nomeNovoFuncionario, departamentoNovoFuncionario, opcao);
-					} catch (Exception e)
-					{
-						System.out.println("Valores de entrada invalidos.");
-					}
-					System.out.println("Funcionario criado com sucesso.");
-					break;
-				case "2":
 					printFuncionarios();
-					System.out.println("Digite o id do funcionário para login: ");
+					System.out.println("Digite o id do funcionario para login: ");
 					Scanner input2 = new Scanner(System.in);
 					try
 					{
@@ -122,35 +104,92 @@ public class SystemManager
 						selecionarUsuarioAtual(id);
 					} catch (Exception e)
 					{
-						System.out.println("Entrada inválida");
+						System.out.println("Entrada invalida");
+					}
+					break;
+
+
+				case "2":
+					System.out.println("Digite [1] para adicionar um usuario normal ou [2] para criar um usuario de suporte: ");
+					try
+					{
+						int opcao = optionScanner.nextInt();
+						System.out.print("ID: ");
+						int idNovoFuncionario = optionScanner.nextInt();
+						System.out.print("Nome: ");
+						String nomeNovoFuncionario = optionScanner.next();
+						System.out.print("Departamento: ");
+						String departamentoNovoFuncionario = optionScanner.next();
+						cadastrarFuncionario(idNovoFuncionario, nomeNovoFuncionario, departamentoNovoFuncionario, opcao);
+
+					} catch (Exception e)
+					{
+						System.out.println("Valores de entrada invalidos.");
 					}
 
 					break;
 
 
 				case "3":
-					System.out.println("Digite o id do equipamento");
+					listarFuncionariosSemChamadosAtivos();
+					break;
+
+
+				case "4":
+					printEquipamentos();
+					break;
+
+
+				case "5":
+					System.out.print("Digite o id do equipamento:");
 					int idEquip = optionScanner.nextInt();
-					System.out.println("Digite a descricao do Produto");
+					System.out.print("Digite a descricao do Produto:");
 					String descricao = optionScanner.next();
-					System.out.println("Entre uma data (formato: MM/dd/yyyy): ");
+					System.out.print("Entre uma data (formato: MM/dd/yyyy): ");
 					String dateStr = optionScanner.next();
 					SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 					Date data;
 					try
 					{
 						data = dateFormat.parse(dateStr);
-						System.out.println("Digite o setor");
-						String EquipSetor = optionScanner.nextLine();
+						System.out.print("Digite o setor:");
+						String EquipSetor = optionScanner.next();
 						cadastrarEquipamento(idEquip, descricao, data, EquipSetor);
 					} catch (ParseException e)
 					{
-						System.out.println("Formato de data inválido.");
+						System.out.println("Formato de data invalido.");
+					}
+					System.out.println("Novo equipamento cadastrado");
+					break;
+
+
+				case "6":
+					Scanner input12 = new Scanner(System.in);
+					System.out.println("Digite a descricao do equipamento");
+					String descricaoEquipamento = input12.nextLine();
+					buscarEquipamentosPorDescricao(descricaoEquipamento);
+					break;
+
+
+				case "7":
+					System.out.print("Digite o id do equipamento: ");
+					Scanner input6 = new Scanner(System.in);
+					Scanner input6String = new Scanner(System.in);
+					try
+					{
+						int id = input6.nextInt();
+						System.out.print("Digite o novo setor");
+						String setor = input6String.nextLine();
+
+						mudarSetorDeEquipamento(id, setor);
+					} catch (Exception e)
+					{
+						System.out.println("Entrada invalida");
 					}
 					break;
 
 
-				case "4":
+				case "8":
 					System.out.println("Digite o id do equipamento que precisa de suporte");
 					int idEquipSup = optionScanner.nextInt();
 					System.out.println("Entre uma data (formato: MM/dd/yyyy): ");
@@ -172,8 +211,8 @@ public class SystemManager
 					break;
 
 
-				case "5":
-					System.out.println("Digite o id do chamado: ");
+				case "9":
+					System.out.print("Digite o id do chamado: ");
 					Scanner input5 = new Scanner(System.in);
 					try
 					{
@@ -181,32 +220,13 @@ public class SystemManager
 						atualizarStatusDeChamado(id);
 					} catch (Exception e)
 					{
-						System.out.println("Entrada inválida");
+						System.out.println("Entrada invalida");
 					}
 					break;
 
 
-				case "6":
-					System.out.println("Digite o id do equipamento: ");
-					Scanner input6 = new Scanner(System.in);
-					Scanner input6String = new Scanner(System.in);
-					try
-					{
-						int id = input6.nextInt();
-						System.out.println("Digite o novo setor");
-						String setor = input6String.nextLine();
-
-						mudarSetorDeEquipamento(id, setor);
-					} catch (Exception e)
-					{
-						System.out.println("Entrada inválida");
-					}
-
-					break;
-
-
-				case "7":
-					System.out.println("Digite o id do equipamento: ");
+				case "10":
+					System.out.print("Digite o id do equipamento: ");
 					Scanner input = new Scanner(System.in);
 					try
 					{
@@ -214,12 +234,12 @@ public class SystemManager
 						listarChamadosPorEquipamento(id);
 					} catch (Exception e)
 					{
-						System.out.println("Número inválido");
+						System.out.println("Numero invalido");
 					}
 					break;
 
 
-				case "8":
+				case "11":
 					System.out.println("Digite a palavra-chave");
 					Scanner input8 = new Scanner(System.in);
 					String palavraChave = input8.nextLine();
@@ -227,15 +247,15 @@ public class SystemManager
 					buscarChamadoPorPalavraChave(palavraChave);
 					break;
 
-				case "9":
+
+				case "12":
 					listarEstatisticasDeChamados();
 					break;
-				case "10":
-					listarFuncionariosSemChamadosAtivos();
-					break;
-				case "11":
+
+
+				case "13":
 					Scanner input11 = new Scanner(System.in);
-					System.out.println("Digite o nome do arquivo sem extensão");
+					System.out.println("Digite o nome do arquivo sem extensao");
 					String nomeArquivo = input11.nextLine();
 
 					try
@@ -247,17 +267,11 @@ public class SystemManager
 					}
 					break;
 
-				case "12":
-					Scanner input12 = new Scanner(System.in);
-					System.out.println("Digite a descrição do equipamento");
-					String descricaoEquipamento = input12.nextLine();
-					buscarEquipamentosPorDescricao(descricaoEquipamento);
-					break;
 
 				default:
 					leave = true;
+					System.out.println();
 					break;
-
 			}
 
 		}
@@ -267,20 +281,26 @@ public class SystemManager
 
 	public void printOptions()
 	{
-		System.out.println("---------- MENU ----------");
-		System.out.println("1 - Cadastrar funcionário");//
-		System.out.println("2 - Selecionar usuário atual");//
-		System.out.println("3 - Cadastrar equipamento");//
-		System.out.println("4 - Cadastrar chamado");
-		System.out.println("5 - Atualizar status de chamado");//
-		System.out.println("6 - Mudar setor de equipamento"); //
-		System.out.println("7 - Listar chamados por equipamento");    //A listagem de chamado por equipamento deve ser por ordem crescente de data de abertura.
-		System.out.println("8 - Buscar chamado por palavra-chave");//
-		System.out.println("9 - Listagem de estatísticas de chamados");//
-		System.out.println("10 - Listar Funcionários de suporte sem chamados ativos");//
-		System.out.println("11 - Salvar chamados em arquivo csv");//
-		System.out.println("12 - Buscar equipamento por descrição");//
-		System.out.println("Qualquer outra opção - Sair");//
+		System.out.println();
+		System.out.println("---------- <<<< MENU >>>> ----------");
+		System.out.println("[1] - Selecionar usuario atual");
+		System.out.println("[2] - Cadastrar funcionario");
+		System.out.println("[3] - Listar funcionarios de suporte sem chamados ativos");//
+		System.out.println("------------------------------------");
+		System.out.println("[4] - Lista de equipamentos");
+		System.out.println("[5] - Cadastrar equipamento");//
+		System.out.println("[6] - Buscar equipamento por descricao");//
+		System.out.println("[7] - Mudar equipamento de setor");
+		System.out.println("------------------------------------");
+		System.out.println("[8] - Cadastrar chamado");
+		System.out.println("[9] - Atualizar status de chamado");//
+		System.out.println("[10] - Listar chamados por equipamento");//A listagem de chamado por equipamento deve ser por ordem crescente de data de abertura.
+		System.out.println("[11] - Buscar chamado por palavra-chave");//
+		System.out.println("[12] - Listagem de estatisticas de chamados");//
+		System.out.println("[13] - Salvar chamados em arquivo csv");//
+		System.out.println("------------------------------------");
+		System.out.println("[SAIR] Digite qualquer outra opcao");
+		System.out.println();//
 	}
 
 	public boolean listarFuncionariosSemChamadosAtivos()
@@ -311,7 +331,7 @@ public class SystemManager
 
 		if (funcionarios.isEmpty())
 		{
-			System.out.println("Nenhum funcionário sem chamados abertos");
+			System.out.println("Nenhum funcionario sem chamados abertos");
 			return false;
 		}
 
@@ -332,11 +352,11 @@ public class SystemManager
 
 		// Write header row
 		printWriter.write("id,");
-		printWriter.write("Funcionário,");
+		printWriter.write("Funcionario,");
 		printWriter.write("id do Equipamento, ");
-		printWriter.write("Data de Solicitação,");
+		printWriter.write("Data de Solicitacao,");
 		printWriter.write("Status,");
-		printWriter.write("Texto de Resolução");
+		printWriter.write("Texto de Resolucao");
 		printWriter.println();
 
 		for (Chamado chamado : chamados)
@@ -358,8 +378,8 @@ public class SystemManager
 	{
 		System.out.println("Total de chamados abertos: " + chamadoManager.getPorcentagemChamadosByStatus(String.valueOf(Chamado.Status.ABERTO)));
 		System.out.println("Total de chamados em andamento: " + chamadoManager.getPorcentagemChamadosByStatus(String.valueOf(Chamado.Status.ANDAMENTO)));
-		System.out.println("Total de chamados concluídos: " + chamadoManager.getPorcentagemChamadosByStatus(String.valueOf(Chamado.Status.CONCLUIDO)));
-		System.out.println("Média de chamados por dia: " + chamadoManager.getMediaChamadosPorDia());
+		System.out.println("Total de chamados concluidos: " + chamadoManager.getPorcentagemChamadosByStatus(String.valueOf(Chamado.Status.CONCLUIDO)));
+		System.out.println("Media de chamados por dia: " + chamadoManager.getMediaChamadosPorDia());
 	}
 
 	public boolean buscarChamadoPorPalavraChave(String palavraChave)
@@ -385,7 +405,7 @@ public class SystemManager
 
 		if (equipamento == null)
 		{
-			System.out.println("Equipamento não encontrado.");
+			System.out.println("Equipamento nao encontrado.");
 			return;
 		}
 
@@ -412,7 +432,7 @@ public class SystemManager
 
 		if (equipamento == null)
 		{
-			System.out.println("Equipamento não encontrado.");
+			System.out.println("Equipamento nao encontrado.");
 			return false;
 		}
 
@@ -426,7 +446,7 @@ public class SystemManager
 	{
 		if (!(funcionarioAtual instanceof FuncionarioDeSuporte))
 		{
-			System.out.println("Apenas funcionários de suporte podem atualizar o status de um chamado.");
+			System.out.println("Apenas funcionarios de suporte podem atualizar o status de um chamado.");
 			return false;
 		}
 
@@ -434,7 +454,7 @@ public class SystemManager
 
 		if (chamado == null)
 		{
-			System.out.println("Chamado não encontrado.");
+			System.out.println("Chamado nao encontrado.");
 			return false;
 		}
 
@@ -447,10 +467,11 @@ public class SystemManager
 		Equipamento e = new Equipamento(id, descricao, dataAquisicao, setor);
 		if (equipamentoManager.findEquipamentoById(id) != null)
 		{
-			System.out.println("ID já cadastrado.");
+			System.out.println("ID ja cadastrado.");
 			return false;
 		}
 		equipamentoManager.adicionaEquipamento(e);
+		System.out.println("Equipamento adicionado com sucesso.");
 		return true;
 	}
 
@@ -463,20 +484,34 @@ public class SystemManager
 			if (funcionario.getId() == id)
 			{
 				funcionarioAtual = funcionario;
-				System.out.println("Usuário " + funcionario.getNome() + " selecionado com sucesso.");
+				System.out.println("Usuario " + funcionario.getNome() + " selecionado com sucesso.");
 				return true;
 			}
 		}
 
-		System.out.println("Usuário não encontrado.");
+		System.out.println("Usuario nao encontrado.");
 		return false;
 	}
 
 	public void printFuncionarios()
 	{
+		System.out.println("[LISTA DE FUNCIONARIOS]");
+		System.out.println();
 		for (Funcionario funcionario : funcionarioManager.getFuncionarios())
 		{
-			System.out.println(funcionario.getNome() + " - " + funcionario.getId());
+			System.out.println("Nome:" + funcionario.getNome()  + "\nID:" + funcionario.getId() + "\n" + funcionario.getDepartamento());
+			System.out.println("-------------------------------------");
+		}
+	}
+
+	public void printEquipamentos()
+	{
+		System.out.println("[LISTA DE EQUIPAMENTOS]");
+		System.out.println();
+		for (Equipamento equipamento : equipamentoManager.getEquipamentos())
+		{
+			System.out.println("ID:" + equipamento.getId()  + "\nDescricao:" + equipamento.getDescricao() + "\nSetor:" + equipamento.getSetor() + "\nData de aquisicao:" + equipamento.getDataAquisicao());
+			System.out.println("-------------------------------------");
 		}
 	}
 
@@ -487,20 +522,22 @@ public class SystemManager
 			Funcionario novoFuncionario = new Funcionario(id, nome, Departamento);
 			if (funcionarioManager.findFuncionarioById(id) != null)
 			{
-				System.out.println("ID já cadastrado");
+				System.out.println("ID ja cadastrado");
 				return false;
 			}
 			funcionarioManager.addFuncionario(novoFuncionario);
+			System.out.println("Funcionario comum adicionado com sucesso.");
 		}
 		if (tipo == 2)
 		{
 			FuncionarioDeSuporte novoFuncionarioDeSuporte = new FuncionarioDeSuporte(id, nome, Departamento);
 			if (funcionarioManager.findFuncionarioById(id) != null)
 			{
-				System.out.println("ID já cadastrado");
+				System.out.println("ID ja cadastrado");
 				return false;
 			}
 			funcionarioManager.addFuncionario(novoFuncionarioDeSuporte);
+			System.out.println("Funcionario de Suporte adicionado com sucesso.");
 		} else
 		{
 			return false;
@@ -514,7 +551,7 @@ public class SystemManager
 
 		if (equipamentos.isEmpty())
 		{
-			System.out.println("Nenhum equipamento encontrado para essa descrição");
+			System.out.println("Nenhum equipamento encontrado para essa descricao");
 			return false;
 		}
 
@@ -535,7 +572,7 @@ public class SystemManager
 			Chamado c = new Chamado((FuncionarioDeSuporte) fs, e, equipId, dataSol, descricao);
 			if (chamadoManager.findChamadoById(c.getId()) != null)
 			{
-				System.out.println("ID já cadastrado");
+				System.out.println("ID ja cadastrado");
 				return false;
 			}
 			((FuncionarioDeSuporte) fs).adicionarChamado(c);

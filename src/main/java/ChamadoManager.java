@@ -79,7 +79,7 @@ public class ChamadoManager {
 				}
 				else
 				{
-					System.out.println("Chamado já está concluído");
+					System.out.println("Chamado já está concluido");
 					return false;
 				}
 			}

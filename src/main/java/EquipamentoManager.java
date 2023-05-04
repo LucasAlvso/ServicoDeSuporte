@@ -42,5 +42,9 @@ public class EquipamentoManager {
 		return true;
 	}
 
+	public List<Equipamento> getEquipamentos() {
+		return equipamentos;
+	}
+
 }
 
