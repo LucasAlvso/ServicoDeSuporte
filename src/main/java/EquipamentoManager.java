@@ -41,6 +41,9 @@ public class EquipamentoManager {
 		equipamentos.add(e);
 		return true;
 	}
+	public List<Equipamento> getEquipamentos() {
+		return equipamentos;
+	}
 
 }
 
