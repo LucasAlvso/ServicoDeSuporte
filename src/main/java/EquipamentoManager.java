@@ -18,20 +18,21 @@ public class EquipamentoManager {
 	}
 
 	public List<Equipamento> findEquipamentoByDescricao(String descricao) {
-		List<Equipamento> lista = new ArrayList<>();
-		for(Equipamento e:equipamentos){
-			if (e.getDescricao().toLowerCase().contains(descricao.toLowerCase())) {
-				lista.add(e);
+		List<Equipamento> equipamentosEncontrados = new ArrayList<>();
+		for (Equipamento equipamento : equipamentos) {
+			if (equipamento.getDescricao().equals(descricao)) {
+				equipamentosEncontrados.add(equipamento);
 			}
 		}
-		return lista;
+		return equipamentosEncontrados;
 	}
 
 	public boolean mudarSetor(int id, String novoSetor) {
-		Equipamento e = this.findEquipamentoById(id);
-		if(e != null) {			
-			e.setSetor(novoSetor);
-			return true;
+		for (Equipamento equipamento : equipamentos) {
+			if (equipamento.getId() == id) {
+				equipamento.setSetor(novoSetor);
+				return true;
+			}
 		}
 		return false;
 

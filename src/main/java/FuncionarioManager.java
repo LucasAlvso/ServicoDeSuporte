@@ -8,29 +8,25 @@ public class FuncionarioManager {
   }
 
   public boolean addFuncionario(Funcionario employee) {
-    Funcionario idAlreadyInUse = findFuncionarioById(employee.getId());
-
-    if (idAlreadyInUse != null) {
-      return false;
-    }
-
-    return funcionarios.add(employee);
+      if (employee == null || funcionarios.contains(employee)) {
+          return false;
+      }
+      return funcionarios.add(employee);
   }
+
 
   public List<Funcionario> getFuncionarios() {
     return funcionarios;
   }
 
 	public Funcionario findFuncionarioById(int id) {
-    for (Funcionario funcionario : funcionarios)
-		{
-			if (funcionario.getId() == id)
-			{
-				return funcionario;
-			}
-		}
-
-    return null;
+        Funcionario[] funcionarioEncontrado = new Funcionario[1];
+        funcionarios.forEach((funcionario) -> {
+            if (funcionario.getId() == id) {
+                funcionarioEncontrado[0] = funcionario;
+            }
+        });
+        return funcionarioEncontrado[0];
 	}
 
 }
