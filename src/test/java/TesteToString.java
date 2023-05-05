@@ -29,5 +29,6 @@ public class TesteToString {
                 "Nome = 'Pedro de Carvalho'," +
                 "Departamento = 'Vendas'";
         Assert.assertEquals(esperado, resultado);
+
     }
 }
