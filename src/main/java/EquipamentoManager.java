@@ -11,10 +11,13 @@ public class EquipamentoManager {
 	}
 
 	public Equipamento findEquipamentoById(int id) {
-		for(Equipamento e:equipamentos){
-			if (e.getId()==id) return e;
-		}
-		return null;
+		Equipamento[] equipamentoEncontrado = new Equipamento[1];
+		equipamentos.forEach((equipamento) -> {
+			if (equipamento.getId() == id) {
+				equipamentoEncontrado[0] = equipamento;
+			}
+		});
+		return equipamentoEncontrado[0];
 	}
 
 	public List<Equipamento> findEquipamentoByDescricao(String descricao) {
