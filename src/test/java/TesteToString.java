@@ -30,5 +30,6 @@ public class TesteToString {
                 "Departamento = 'Vendas'";
         Assert.assertEquals(esperado, resultado);
 
+
     }
 }
