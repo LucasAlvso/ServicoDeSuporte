@@ -142,7 +142,7 @@ public class SystemManager
 					{
 						data = dateFormat.parse(dateStr);
 						System.out.println("Digite o setor:");
-						String EquipSetor = optionScanner.next();
+						String EquipSetor = optionScanner.nextLine();
 						cadastrarEquipamento(idEquip, descricao, data, EquipSetor);
 					} catch (ParseException e)
 					{
