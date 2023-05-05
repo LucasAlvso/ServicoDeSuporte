@@ -95,7 +95,7 @@ public class SystemManager
 			switch (option)
 			{
 				case "1":
-					System.out.println("Digite 1 para criar um usuario normal e 2 para criar um usuario de suporte: ");
+					System.out.println("Digite [1] para adicionar um usuario normal ou [2] para criar um usuario de suporte: ");
 					try
 					{
 						int opcao = optionScanner.nextInt();
@@ -110,8 +110,9 @@ public class SystemManager
 					{
 						System.out.println("Valores de entrada invalidos.");
 					}
-					System.out.println("Funcionario criado com sucesso.");
+
 					break;
+
 				case "2":
 					printFuncionarios();
 					System.out.println("Digite o id do funcionário para login: ");
@@ -140,13 +141,14 @@ public class SystemManager
 					try
 					{
 						data = dateFormat.parse(dateStr);
-						System.out.println("Digite o setor");
-						String EquipSetor = optionScanner.nextLine();
+						System.out.println("Digite o setor:");
+						String EquipSetor = optionScanner.next();
 						cadastrarEquipamento(idEquip, descricao, data, EquipSetor);
 					} catch (ParseException e)
 					{
 						System.out.println("Formato de data inválido.");
 					}
+					System.out.println("Novo equipamento cadastrado");
 					break;
 
 
@@ -254,6 +256,10 @@ public class SystemManager
 					buscarEquipamentosPorDescricao(descricaoEquipamento);
 					break;
 
+				case "13":
+					printEquipamentos();
+					break;
+
 				default:
 					leave = true;
 					break;
@@ -267,20 +273,25 @@ public class SystemManager
 
 	public void printOptions()
 	{
-		System.out.println("---------- MENU ----------");
-		System.out.println("1 - Cadastrar funcionário");//
-		System.out.println("2 - Selecionar usuário atual");//
-		System.out.println("3 - Cadastrar equipamento");//
-		System.out.println("4 - Cadastrar chamado");
-		System.out.println("5 - Atualizar status de chamado");//
-		System.out.println("6 - Mudar setor de equipamento"); //
-		System.out.println("7 - Listar chamados por equipamento");    //A listagem de chamado por equipamento deve ser por ordem crescente de data de abertura.
-		System.out.println("8 - Buscar chamado por palavra-chave");//
-		System.out.println("9 - Listagem de estatísticas de chamados");//
-		System.out.println("10 - Listar Funcionários de suporte sem chamados ativos");//
-		System.out.println("11 - Salvar chamados em arquivo csv");//
-		System.out.println("12 - Buscar equipamento por descrição");//
-		System.out.println("Qualquer outra opção - Sair");//
+		System.out.println();
+		System.out.println("---------- <<<< MENU >>>> ----------");
+		System.out.println("[1] - Cadastrar funcionário");//
+		System.out.println("[2] - Selecionar usuário atual");//
+		System.out.println("[3] - Cadastrar equipamento");//
+		System.out.println("[4] - Cadastrar chamado");
+		System.out.println("[5] - Atualizar status de chamado");//
+		System.out.println("[6] - Mudar setor de equipamento"); //
+		System.out.println("[7] - Listar chamados por equipamento");    //A listagem de chamado por equipamento deve ser por ordem crescente de data de abertura.
+		System.out.println("[8] - Buscar chamado por palavra-chave");//
+		System.out.println("[9] - Listagem de estatísticas de chamados");//
+		System.out.println("[10] - Listar Funcionários de suporte sem chamados ativos");//
+		System.out.println("[11] - Salvar chamados em arquivo csv");//
+		System.out.println("[12] - Buscar equipamento por descrição");//
+		System.out.println("[13] - Lista de equipamentos");
+		System.out.println("------------------------------------");
+		System.out.println("[SAIR] Digite qualquer outra opcao");
+		System.out.println();//
+
 	}
 
 	public boolean listarFuncionariosSemChamadosAtivos()
@@ -451,6 +462,7 @@ public class SystemManager
 			return false;
 		}
 		equipamentoManager.adicionaEquipamento(e);
+		System.out.println("Equipamento adicionado com sucesso.");
 		return true;
 	}
 
@@ -474,9 +486,22 @@ public class SystemManager
 
 	public void printFuncionarios()
 	{
+		System.out.println("[LISTA DE FUNCIONARIOS]");
+		System.out.println();
 		for (Funcionario funcionario : funcionarioManager.getFuncionarios())
 		{
-			System.out.println(funcionario.getNome() + " - " + funcionario.getId());
+			System.out.println("Nome:" + funcionario.getNome()  + "\nID:" + funcionario.getId() + "\n" + funcionario.getDepartamento());
+			System.out.println("-------------------------------------");
+		}
+	}
+	public void printEquipamentos()
+	{
+		System.out.println("[LISTA DE EQUIPAMENTOS]");
+		System.out.println();
+		for (Equipamento equipamento : equipamentoManager.getEquipamentos())
+		{
+			System.out.println("ID:" + equipamento.getId()  + "\nDescricao:" + equipamento.getDescricao() + "\nSetor:" + equipamento.getSetor() + "\nData de aquisicao:" + equipamento.getDataAquisicao());
+			System.out.println("-------------------------------------");
 		}
 	}
 
@@ -491,6 +516,7 @@ public class SystemManager
 				return false;
 			}
 			funcionarioManager.addFuncionario(novoFuncionario);
+			System.out.println("Funcionario comum adicionado com sucesso.");
 		}
 		if (tipo == 2)
 		{
@@ -501,6 +527,7 @@ public class SystemManager
 				return false;
 			}
 			funcionarioManager.addFuncionario(novoFuncionarioDeSuporte);
+			System.out.println("Funcionario de Suporte adicionado com sucesso.");
 		} else
 		{
 			return false;
