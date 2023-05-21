@@ -1,12 +1,10 @@
-name: Test and build with Maven
+name: Unit test with Maven
 
 on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -15,5 +13,5 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
           cache: maven
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
+      - name: Run unit tests
+        run: mvn test
