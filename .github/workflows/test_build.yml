@@ -1,4 +1,4 @@
-name: Test build with Maven
+name: Test and build with Maven
 
 on: [push, pull_request]
 

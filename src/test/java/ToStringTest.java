@@ -11,9 +11,9 @@ public class ToStringTest {
         String resultado = equipamento.toString();
 
         String esperado = "Equipamento:" +
-                "id = 1," +
-                "descricao = 'Notebook Dell'," +
-                "dataAquisicao = Fri Feb 13 23:31:30 BRT 2009," +
+                "id = 1, " +
+                "descricao = 'Notebook Dell', " +
+                "dataAquisicao = Fri Feb 13 21:31:30 BRST 2009, " +
                 "setor = 'Departamento de TI'";
         Assert.assertEquals(esperado, resultado);
     }
@@ -24,10 +24,10 @@ public class ToStringTest {
 
         String resultado = funcionario.toString();
 
-        String esperado = "Funcionário:" +
-                "id = 1," +
-                "Nome = 'Pedro de Carvalho'," +
-                "Departamento = 'Vendas'";
+        String esperado = "Funcionario" +
+                "id = 1, " +
+                "nome = 'Pedro de Carvalho', " +
+                "departamento = 'Vendas'";
         Assert.assertEquals(esperado, resultado);
 
 
