@@ -41,6 +41,7 @@ public class ChamadoManager {
 			}
 		}
 
+
 		return chamadosByEquipamento;
 	}
 
