@@ -6,9 +6,6 @@ public class Application
         systemManager.inserirDadosIniciais();
         systemManager.runCliMenu();
 
-
-
-
     }
 
 }
