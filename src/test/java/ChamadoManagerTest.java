@@ -39,7 +39,7 @@ class ChamadoManagerTest {
         Chamado chamado1 = new Chamado(funcionario, equipamento, 1, dataAquisicao, "teste");
         chamadoManager.addChamado(chamado1);
         List<Chamado> result = chamadoManager.findChamadoByFuncionario(funcionario);
-        Assertions.assertEquals(45, result.size());
+        Assertions.assertEquals(1, result.size());
         Assertions.assertEquals(chamado1, result.get(0));
     }
 
